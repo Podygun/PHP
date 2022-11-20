@@ -62,7 +62,6 @@ function getUserFromConsole($specificId = null): array
 function findUserKey($usersArray, int $findId): ?int
 {
     for ($i = 0; $i < count($usersArray["users"]); $i++) {
-
         $keyOfUser = array_search($findId, $usersArray["users"][$i]);
         if ($keyOfUser !== false) {
             return $i;
@@ -118,7 +117,6 @@ function isModifiedMySql($sqlQuery): bool
         print("Ошибка: Невозможно подключиться к MySQL " . mysqli_connect_error());
         return false;
     }
-
     $result = mysqli_query($link, $sqlQuery);
     if ($result == false) {
         return false;
@@ -163,7 +161,7 @@ function deleteAction(): void
 
 function checkFile(): void
 {
-    if (!file_exists(JSON_PATH)){
+    if (!file_exists(JSON_PATH)) {
         fopen(JSON_PATH, "w");
         $jsonTemplate = '{"users": []}';
         file_put_contents(JSON_PATH, $jsonTemplate);
