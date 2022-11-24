@@ -45,7 +45,7 @@ function getUserFromConsole($specificId = null): array
     $login = readline('Введите login: ');
     $password = readline('Введите password: ');
     $name = readline('Введите name: ');
-    if ($specificId == null) {
+    if ($specificId === null) {
         $id = getUniqueUserId();
     } else {
         $id = $specificId;
@@ -73,7 +73,7 @@ function findUserKey($usersArray, int $findId): ?int
 function getUniqueUserId(): int
 {
     $usersArray = getArrayFromJsonFile(JSON_PATH);
-    if (count($usersArray["users"]) == 0) {
+    if (count($usersArray["users"]) === 0) {
         return 1;
     } else {
         return $usersArray["users"][count($usersArray["users"]) - 1]["id"] + 1;
@@ -113,12 +113,12 @@ function deleteUserMySql($userId): void
 function isModifiedMySql($sqlQuery): bool
 {
     $link = mysqli_connect("localhost", "root", "3306", "user_db");
-    if ($link == false) {
+    if ($link === false) {
         print("Ошибка: Невозможно подключиться к MySQL " . mysqli_connect_error());
         return false;
     }
     $result = mysqli_query($link, $sqlQuery);
-    if ($result == false) {
+    if ($result === false) {
         return false;
     }
     return true;
@@ -171,13 +171,13 @@ function checkFile(): void
 while (true) {
     printInterface();
     $inputAction = readline();
-    if ($inputAction == "1") {
+    if ($inputAction === "1") {
         insertAction();
-    } elseif ($inputAction == "2") {
+    } elseif ($inputAction === "2") {
         updateAction();
-    } elseif ($inputAction == "3") {
+    } elseif ($inputAction === "3") {
         deleteAction();
-    } elseif ($inputAction == "4") {
+    } elseif ($inputAction === "4") {
         return;
     }
 }
