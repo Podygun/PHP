@@ -9,7 +9,6 @@
 </head>
 
 <body>
-    <h4><?php echo date('Влад Подыганов П-41'); ?></h4>
     <form action="AuthorizationHandler.php" method="get" class="main_form">
         <div class="login_group">
             <label for="name">Логин</label>

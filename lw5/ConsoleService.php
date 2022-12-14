@@ -108,8 +108,7 @@ function isIdUserExists($inputId): bool
     $stmt->bind_result($foundId);
     $stmt->fetch();
 
-    if ($foundId === null) return false;
-    return true;
+    return (bool) $foundId;
 }
 
 while (true) {

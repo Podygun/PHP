@@ -10,7 +10,7 @@ $stmt->execute();
 $stmt->bind_result($userName);
 $stmt->fetch();
 
-if ($userName === null) {
+if (!$userName) {
     echo ("Введены неверные данные"), PHP_EOL;
 } else {
     echo ("Вы успешно вошли под именем "), $userName, PHP_EOL;
