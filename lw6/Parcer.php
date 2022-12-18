@@ -2,12 +2,12 @@
 
 define('URL', 'https://www.cbr-xml-daily.ru/daily_json.js');
 
-function GetValutesCBR()
+function getValutesCBR()
 {
     return json_decode(file_get_contents(URL));
 }
 
-function SendToTelegramBot($text): void
+function sendToTelegramBot($text): void
 {
     $botToken = "5906508386:AAG6B7D_OIBnAmvY418lXLH3kHKBqTW6RhE";
     $website = "https://api.telegram.org/bot" . $botToken;
@@ -27,10 +27,10 @@ function SendToTelegramBot($text): void
     curl_close($ch);
 }
 
-$data = GetValutesCBR();
+$data = getValutesCBR();
 
 $text =
     $data->Valute->USD->Name . ': ' . $data->Valute->USD->Value . "\n" .
     $data->Valute->EUR->Name . ': ' . $data->Valute->EUR->Value;
 
-SendToTelegramBot($text);
+sendToTelegramBot($text);
